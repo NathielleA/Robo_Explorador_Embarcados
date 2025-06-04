@@ -1,0 +1,2 @@
+DEVICE ID: 1badc53e-aac9-46c3-bf4d-de6a8cda25f0
+SECRET KEY: Q8WQPLacRvoi0uxBsRYeAw5UV
