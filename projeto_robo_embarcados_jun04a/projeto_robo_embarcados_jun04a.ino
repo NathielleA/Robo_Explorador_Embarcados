@@ -28,6 +28,20 @@ void setup() {
 
   // Connect to Arduino IoT Cloud
   ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+
+  // Functions that create random values for the sensors
+  // These functions are not necessary if you are using real sensors
+  // They are only used to simulate the sensors in the Arduino IoT Cloud
+  // You can remove them if you are using real sensors
+  ArduinoCloud.addCommand("fotorresistor", []() {
+    fotorresistor = random(0, 1023);
+  });
+  ArduinoCloud.addCommand("gas_sensor", []() {
+    gas_sensor = random(0, 1023);
+  });
+  ArduinoCloud.addCommand("temperatura_sensor", []() {
+    temperatura_sensor = random(0, 100);
+  });
   
   /*
      The following function allows you to obtain more information
