@@ -5,8 +5,8 @@ import random
 import paho.mqtt.client as mqtt
 
 # ---- Configurações da Arduino Cloud ----
-DEVICE_ID = "SEU_DEVICE_ID"
-SECRET_KEY = "SUA_SECRET_KEY"
+DEVICE_ID = "1badc53e-aac9-46c3-bf4d-de6a8cda25f0"  # ID do dispositivo na Arduino Cloud
+SECRET_KEY = "Q8WQPLacRvoi0uxBsRYeAw5UV"
 TOPIC = f"/v1/devices/{DEVICE_ID}/events"
 
 # ---- Criação do cliente MQTT ----
