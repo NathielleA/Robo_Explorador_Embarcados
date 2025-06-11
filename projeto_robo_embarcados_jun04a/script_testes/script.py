@@ -4,6 +4,15 @@ import time
 import random
 import paho.mqtt.client as mqtt
 
+# Definindo o endereço do broker
+broker = 'broker.emqx.io'
+port = 1883
+topic = "python/mqtt"
+client_id = f'python-mqtt-{random.randint(0, 1000)}'
+# username = 'emqx'
+# password = 'public'
+#--------------------------------
+
 # ---- Configurações da Arduino Cloud ----
 DEVICE_ID = "1badc53e-aac9-46c3-bf4d-de6a8cda25f0"  # ID do dispositivo na Arduino Cloud
 SECRET_KEY = "Q8WQPLacRvoi0uxBsRYeAw5UV"
