@@ -1,4 +1,8 @@
-# Projeto: Robô Inteligente Explorador Autônomo em Missão Planetária (Problema #3 - 2025.1)
+<p align="center">
+    <h1 align="center">🤖🌌 Projeto: Robô Inteligente Explorador Autônomo em Missão Planetária 🚀🪐</h1>
+</p>
+
+## Sistemas Embarcados - Problema #3 - 2025.1
 
 Este repositório contém a solução desenvolvida para o Problema #3 da disciplina de Sistemas Embarcados da Universidade Estadual de Feira de Santana (UEFS). O projeto consiste em um robô explorador autônomo baseado no ESP32, capaz de coletar dados ambientais, processá-los com uma Rede Neural Embarcada para classificar o terreno e enviar os resultados para um centro de análise remoto, além de interagir com o usuário via WhatsApp. 
 
@@ -7,7 +11,7 @@ Este repositório contém a solução desenvolvida para o Problema #3 da discipl
 ### 1. Visão Geral
 O objetivo principal deste projeto é desenvolver um robô móvel autônomo utilizando um sistema embarcado ESP32. Este robô é projetado para simular a exploração da superfície de um planeta desconhecido, coletando dados de temperatura, umidade, gás e luz. Uma rede neural embarcada processa esses dados para classificar o ambiente como "Propício a Vida", "Condição Moderada" ou "Ambiente Hostil". Em caso de ambiente propício à vida, o robô envia uma notificação via WhatsApp com os dados coletados. 
 
-
+---
 
 ### 2. Objetivos de Aprendizagem
 Ao final da realização deste problema, os discentes deveriam ser capazes de: 
@@ -20,6 +24,7 @@ Aplicar conhecimentos de circuitos digitais e arquiteturas de computadores para 
 * Utilizar Dashboards para Internet das Coisas (a infraestrutura de MQTT permite a integração com dashboards). 
 * Utilizar as interfaces disponíveis no ESP32.
 
+---
 ### 3. Requisitos Atendidos
 A solução desenvolvida atende aos seguintes requisitos propostos:
 
@@ -69,6 +74,7 @@ Além disso, o robô se inscreve no tópico `UEFS_TEC_470/operacao` para receber
 * **Foto**: A funcionalidade de tirar foto e encaminhar ao Dashboard em caso de ambiente propício à vida não foi implementada.
 * **Dados de tempo no JSON**: Embora a função `get_time_stamp()` e `gerarJson()` existam, a chamada para `gerarJson()` está comentada na função `publicar_dados()`, e as variáveis `operacao` e `data_hora` usadas em `gerarJson()` não estão globalmente definidas no código principal.
 
+---
 ### 4. Estrutura do Projeto
 O projeto é composto pelos seguintes arquivos:
 
@@ -76,6 +82,7 @@ O projeto é composto pelos seguintes arquivos:
 * `predict_chancevida.h`: Cabeçalho da biblioteca C contendo a declaração da função `predict_chancevida` para inferência da rede neural.
 * `predict_chancevida.cpp`: Implementação da função `predict_chancevida`, contendo os pesos e biases da rede neural treinada.
 * `rtwtypes.h`: Tipos de dados gerados pelo MATLAB Coder, necessários para a compatibilidade com o código da rede neural.
+---
 
 ### 5. Configuração e Instalação
 Para compilar e carregar o código no ESP32, siga os passos abaixo:
@@ -105,16 +112,27 @@ Para compilar e carregar o código no ESP32, siga os passos abaixo:
     * Configure `phoneNumber` e `apiKey` para a CallMeBot API, caso deseje utilizar o recurso de mensagens via WhatsApp.
 
     * Se necessário, ajuste as credenciais do broker MQTT (`mqtt_broker`, `mqtt_username`, `mqtt_password`) para seu ambiente.
+---
+### 6. Montagem do Circuito
+O circuito do robô é composto pelos seguintes componentes (como na foto abaixo):
 
-### 6. Uso
+![Montagem do Circuito](img/montagem.jpg)
+
+* **ESP32**: Microcontrolador responsável pelo processamento e comunicação.
+* **Sensores**: Módulos de temperatura, umidade, gás e luz conectados às entradas analógicas do ESP32.
+* **Botão de Parada**: Conectado ao pino `BT_PARADA` (GPIO 15) para interrupção externa.
+* **Módulo WiFi**: Integrado ao ESP32 para comunicação com a rede.
+
+---
+### 7. Uso
 Após carregar o código no ESP32:
 
 1. Abra o **Monitor Serial** na IDE do Arduino para visualizar o status da conexão WiFi, leituras dos sensores, e o resultado da classificação da Rede Neural.
 2. O robô iniciará automaticamente a coleta de dados e a avaliação do ambiente.
 3. Em caso de **Chance de Vida > 80%**, uma mensagem será enviada para o número de WhatsApp configurado.
 4. O botão conectado ao pino `BT_PARADA` (GPIO 15) pode ser pressionado para enviar uma mensagem via MQTT para o tópico `UEFS_TEC_470/operacao`.
-
-### 7. Resultados e Avaliação da Rede Neural
+---
+### 8. Resultados e Avaliação da Rede Neural
 
 A rede neural embarcada realiza a classificação do ambiente com base nos dados de temperatura, umidade, gás e luz. A saída da rede neural é um percentual de "chance de vida", que é categorizado da seguinte forma: 
 
@@ -125,6 +143,7 @@ A rede neural embarcada realiza a classificação do ambiente com base nos dados
 A rede neural foi treinada previamente e os pesos e biases estão incorporados no código, permitindo que o robô classifique o ambiente sem necessidade de conexão com servidores externos.
 
 Os pesos e biases da rede neural estão incluídos nos arquivos `predict_chancevida.cpp` e `predict_chancevida.h`, indicando que a rede foi treinada e embarcada no dispositivo.
+
 
 
 
